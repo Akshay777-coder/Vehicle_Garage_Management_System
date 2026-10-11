@@ -74,11 +74,13 @@ def create_table_spareParts():
 def delete_car(car_id):
     conn = create_db()
     cursor = conn.cursor()
-                                                  cursor.execute("DELETE FROM spare_parts WHERE part_id = ?",(part_id,))
+    
+    cursor.execute("DELETE FROM spare_parts WHERE part_id = ?",(part_id,))
 
     conn.commit()                             
     print(f"Successfully deleted row where part id was {car_id}")
-                                                  conn.close()
+
+    conn.close()
 
 # insert data into cars table
 def insert_data_into_cars(make, model, year, color, licence_plate, owner_name):
