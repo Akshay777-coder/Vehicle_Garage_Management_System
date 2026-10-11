@@ -14,6 +14,8 @@ if not os.path.exists(path):
 # Database file name
 Database = 'database\\vehicle_garage.db'
 
+# --------------------------------------------------------------------------------------------
+
 # Create a connection to the SQLite database
 def create_db():
     conn = sqlite3.connect(Database)
@@ -72,6 +74,20 @@ def delete_car(car_id):
 
     conn.close()
 
+def update_car(car_id, make, model, year, color, license_plate, owner_name):
+    conn = create_db()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        UPDATE cars
+        SET make = ?, model = ?, year = ?, color = ?, license_plate = ?, owner_name = ?
+        WHERE car_id = ?
+    """, (make, model, year, color, license_plate, owner_name, car_id))
+
+    conn.commit()
+    print(f"Car updated successfully! Car ID: {car_id}")
+    conn.close()
+
 # Display all cars
 def display_cars():
     conn = create_db()
@@ -95,6 +111,8 @@ def display_cars():
         print(f"Error displaying cars: {e}")
     finally:
         conn.close()
+
+# --------------------------------------------------------------------------------------------
 
 # Create the spareParts table if it doesn't exist
 def create_table_spareParts():
@@ -144,6 +162,20 @@ def delete_sparePart(part_id):
 
     conn.close()
 
+def update_spareParts(part_id, part_name, part_number, price, quantity):
+    conn = create_db()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        UPDATE spare_parts
+        SET part_name = ?, part_number = ?, price = ?, quantity = ?
+        WHERE part_id = ?
+    """, (part_name, part_number, price, quantity, part_id))
+
+    conn.commit()
+    print(f"Spare part updated successfully! Part ID: {part_id}")
+    conn.close()
+
 # Display all spare parts
 def display_spareParts():
     conn = create_db()
@@ -163,3 +195,5 @@ def display_spareParts():
         print(f"Error displaying spare parts: {e}")
     finally:
         conn.close()
+
+# --------------------------------------------------------------------------------------------
