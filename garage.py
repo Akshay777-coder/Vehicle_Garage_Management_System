@@ -1,8 +1,18 @@
 import sqlite3
+import os
+
+# Database directory
+database_name = 'database'
+
+# current worling dir path
+path = os.path.join(os.getcwd(), database_name)
+
+# Check if dir exists
+if not os.path.exists(path):
+    os.mkdir(path)
 
 # Database file name
-Database = 'c:\\Users\\Akshay kumar\\OneDrive\\Desktop\\VS Code\\Vehicle_Garage_Management_System\\Database\\vehicle_garage.db'
-
+Database = 'database\\vehicle_garage.db'
 
 # Create a connection to the SQLite database
 def create_db():
