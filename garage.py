@@ -39,49 +39,6 @@ def create_table_cars():
     conn.commit()
     conn.close()
 
-# Delete row from cars
-def delete_car(car_id):
-    conn = create_db()
-    cursor = conn.cursor()
-
-    cursor.execute("DELETE FROM cars WHERE car_id = ?",(car_id,))
-    
-    conn.commit()
-
-    print(f"Successfully deleted row where car id was {car_id}")
-
-    conn.close()
-
-# Create the spareParts table if it doesn't exist
-def create_table_spareParts():
-    conn = create_db()
-    cursor = conn.cursor()
-
-    cursor.execute("""
-            CREATE TABLE IF NOT EXISTS spare_parts (
-                part_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                part_name TEXT NOT NULL,
-                part_number TEXT NOT NULL UNIQUE,
-                price REAL NOT NULL,
-                quantity INTEGER NOT NULL
-            )
-        """)
-    
-    conn.commit()
-    conn.close()
-
-# Delete row from cars
-def delete_car(car_id):
-    conn = create_db()
-    cursor = conn.cursor()
-    
-    cursor.execute("DELETE FROM spare_parts WHERE part_id = ?",(part_id,))
-
-    conn.commit()                             
-    print(f"Successfully deleted row where part id was {car_id}")
-
-    conn.close()
-
 # insert data into cars table
 def insert_data_into_cars(make, model, year, color, licence_plate, owner_name):
     conn = create_db()
@@ -102,23 +59,18 @@ def insert_data_into_cars(make, model, year, color, licence_plate, owner_name):
     finally:
         conn.close()
 
-# Insert data into spareParts table
-def insert_data_into_spareParts(part_name, part_number, price, quantity):
+# Delete row from cars
+def delete_car(car_id):
     conn = create_db()
-    try:
-        cursor = conn.cursor()
+    cursor = conn.cursor()
 
-        cursor.execute("""
-            INSERT INTO spare_parts (part_name, part_number, price, quantity)
-            VALUES (?, ?, ?, ?)
-        """, (part_name, part_number, price, quantity))
+    cursor.execute("DELETE FROM cars WHERE car_id = ?",(car_id,))
+    
+    conn.commit()
 
-        conn.commit()
-        print(f"Spare part inserted successfully! Part ID: {cursor.lastrowid}\n")
-    except sqlite3.Error as e:
-        print(f"Error inserting data into spare parts table: {e}")
-    finally:
-        conn.close()
+    print(f"Successfully deleted row where car id was {car_id}")
+
+    conn.close()
 
 # Display all cars
 def display_cars():
@@ -143,6 +95,54 @@ def display_cars():
         print(f"Error displaying cars: {e}")
     finally:
         conn.close()
+
+# Create the spareParts table if it doesn't exist
+def create_table_spareParts():
+    conn = create_db()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+            CREATE TABLE IF NOT EXISTS spare_parts (
+                part_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                part_name TEXT NOT NULL,
+                part_number TEXT NOT NULL UNIQUE,
+                price REAL NOT NULL,
+                quantity INTEGER NOT NULL
+            )
+        """)
+    
+    conn.commit()
+    conn.close()
+
+# Insert data into spareParts table
+def insert_data_into_spareParts(part_name, part_number, price, quantity):
+    conn = create_db()
+    try:
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            INSERT INTO spare_parts (part_name, part_number, price, quantity)
+            VALUES (?, ?, ?, ?)
+        """, (part_name, part_number, price, quantity))
+
+        conn.commit()
+        print(f"Spare part inserted successfully! Part ID: {cursor.lastrowid}\n")
+    except sqlite3.Error as e:
+        print(f"Error inserting data into spare parts table: {e}")
+    finally:
+        conn.close()
+
+# Delete row from spareParts
+def delete_sparePart(part_id):
+    conn = create_db()
+    cursor = conn.cursor()
+    
+    cursor.execute("DELETE FROM spare_parts WHERE part_id = ?",(part_id,))
+
+    conn.commit()                             
+    print(f"Successfully deleted row where part id was {part_id}")
+
+    conn.close()
 
 # Display all spare parts
 def display_spareParts():
