@@ -62,7 +62,7 @@ def insert_data_into_cars(make, model, year, color, licence_plate, owner_name):
         conn.close()
 
 # Delete row from cars
-def delete_car(car_id):
+def delete_cars(car_id):
     conn = create_db()
     cursor = conn.cursor()
 
@@ -74,7 +74,7 @@ def delete_car(car_id):
 
     conn.close()
 
-def update_car(car_id, make, model, year, color, license_plate, owner_name):
+def update_cars(car_id, make, model, year, color, license_plate, owner_name):
     conn = create_db()
     cursor = conn.cursor()
 
@@ -103,10 +103,11 @@ def display_cars():
             print("No cars found in the garage.")
             return
 
+        print("\n<--- Cars in the Garage. --->")
         print("\nCarId\tMake\tModel\tYear\tColor\tLicencePlate\tOwnerName")
         for row in rows:
             print(f"{row[0]}\t{row[1]}\t{row[2]}\t{row[3]}\t{row[4]}\t{row[5]}\t\t{row[6]}")
-        print("--- End of Cars List ---\n")
+        print("\n<--- End of Cars List --->")
     except sqlite3.Error as e:
         print(f"Error displaying cars: {e}")
     finally:
@@ -151,7 +152,7 @@ def insert_data_into_spareParts(part_name, part_number, price, quantity):
         conn.close()
 
 # Delete row from spareParts
-def delete_sparePart(part_id):
+def delete_spareParts(part_id):
     conn = create_db()
     cursor = conn.cursor()
     
@@ -186,11 +187,12 @@ def display_spareParts():
         cursor.execute("SELECT * FROM spare_parts")
     
         rows = cursor.fetchall()
-        
-        print("\nPartId\tPartName\tPartNumber\tPrice\tQuantity")
+
+        print("\n<--- Spare Parts in the Garage. --->\n")
+        print("PartId\tPartName\tPartNumber\tPrice\tQuantity")
         for row in rows:
-            print(f"{row[0]}\t{row[1]}\t{row[2]}\t{row[3]}\t{row[4]}\t{row[5]}\t\t{row[6]}")
-        print("--- End of Spare Parts List ---\n")
+            print(f"{row[0]}\t{row[1]}\t\t{row[2]}\t\t{row[3]}\t{row[4]}")
+        print("\n<--- End of Spare Parts List --->")
     except sqlite3.Error as e:
         print(f"Error displaying spare parts: {e}")
     finally:
