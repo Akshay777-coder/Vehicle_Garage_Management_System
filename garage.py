@@ -12,7 +12,7 @@ if not os.path.exists(path):
     os.mkdir(path)
 
 # Database file name
-database = r'database\\vehicle_garage.db'
+database = r'database/vehicle_garage.db'
 
 # --------------------------------------------------------------------------------------------
 
