@@ -29,6 +29,19 @@ def create_table_cars():
     conn.commit()
     conn.close()
 
+# Delete row from cars
+def delete_car(car_id):
+    conn = create_db()
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM cars WHERE car_id = ?",(car_id,))
+    
+    conn.commit()
+
+    print(f"Successfully deleted row where car id was {car_id}")
+
+    conn.close()
+
 # Create the spareParts table if it doesn't exist
 def create_table_spareParts():
     conn = create_db()
@@ -46,6 +59,16 @@ def create_table_spareParts():
     
     conn.commit()
     conn.close()
+
+# Delete row from cars
+def delete_car(car_id):
+    conn = create_db()
+    cursor = conn.cursor()
+                                                  cursor.execute("DELETE FROM spare_parts WHERE part_id = ?",(part_id,))
+
+    conn.commit()                             
+    print(f"Successfully deleted row where part id was {car_id}")
+                                                  conn.close()
 
 # insert data into cars table
 def insert_data_into_cars(make, model, year, color, licence_plate, owner_name):
@@ -85,6 +108,7 @@ def insert_data_into_spareParts(part_name, part_number, price, quantity):
     finally:
         conn.close()
 
+# Display all cars
 def display_cars():
     conn = create_db()
 
@@ -108,6 +132,7 @@ def display_cars():
     finally:
         conn.close()
 
+# Display all spare parts
 def display_spareParts():
     conn = create_db()
 
