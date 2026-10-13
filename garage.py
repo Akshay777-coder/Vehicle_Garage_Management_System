@@ -188,10 +188,14 @@ def display_spareParts():
     
         rows = cursor.fetchall()
 
+        if not rows:
+            print("No cars found in the garage.")
+            return
+
         print("\n<--- Spare Parts in the Garage. --->\n")
         print("PartId\tPartName\tPartNumber\tPrice\tQuantity")
         for row in rows:
-            print(f"{row[0]}\t{row[1]}\t\t{row[2]}\t\t{row[3]}\t{row[4]}")
+            print(f"{row[0]}\t{row[1]}\t\t{row[2]}\t{row[3]}\t{row[4]}")
         print("\n<--- End of Spare Parts List --->")
     except sqlite3.Error as e:
         print(f"Error displaying spare parts: {e}")
