@@ -36,7 +36,7 @@ def cars():
             case 4:
                 print("\n --- Delete Cars --- \n")
                 car_id = int(input("Enter Car ID: "))
-                print(f"Are you sure you want to delete the car with ID {car_id}? (yes/no)", end="")
+                print(f"Are you sure you want to delete the car with ID {car_id}? (yes/no): ", end="")
                 confirmation = input().strip().lower()
                 if confirmation == "yes":
                     garage.delete_cars(car_id)
@@ -78,7 +78,7 @@ def spare_parts():
             case 4:
                 print("\n --- Delete Spare Parts --- \n")
                 part_id = int(input("Enter Part ID: "))
-                print(f"Are you sure you want to delete the spare part with ID {part_id}? (yes/no)", end="")
+                print(f"Are you sure you want to delete the spare part with ID {part_id}? (yes/no): ", end="")
                 confirmation = input().strip().lower()
                 if confirmation == "yes":
                     garage.delete_spareParts(part_id)
