@@ -124,9 +124,10 @@ def create_table_spareParts():
             CREATE TABLE IF NOT EXISTS spare_parts (
                 part_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 part_name TEXT NOT NULL,
-                part_number TEXT NOT NULL UNIQUE,
+                quantity INTEGER NOT NULL,
                 price REAL NOT NULL,
-                quantity INTEGER NOT NULL
+                car_id  INTEGER,
+                FOREIGN KEY (car_id) REFERENCES groups(car_id)
             )
         """)
     
@@ -134,15 +135,15 @@ def create_table_spareParts():
     conn.close()
 
 # Insert data into spareParts table
-def insert_data_into_spareParts(part_name, part_number, price, quantity):
+def insert_data_into_spareParts(part_name, quantity, price, car_id):
     conn = create_db()
     try:
         cursor = conn.cursor()
 
         cursor.execute("""
-            INSERT INTO spare_parts (part_name, part_number, price, quantity)
+            INSERT INTO spare_parts (part_name, quantity, price, car_id)
             VALUES (?, ?, ?, ?)
-        """, (part_name, part_number, price, quantity))
+        """, (part_name, quantity, price, car_id))
 
         conn.commit()
         print(f"Spare part inserted successfully! Part ID: {cursor.lastrowid}\n")
@@ -163,15 +164,15 @@ def delete_spareParts(part_id):
 
     conn.close()
 
-def update_spareParts(part_id, part_name, part_number, price, quantity):
+def update_spareParts(part_id, part_name, quantity, price, car_id):
     conn = create_db()
     cursor = conn.cursor()
 
     cursor.execute("""
         UPDATE spare_parts
-        SET part_name = ?, part_number = ?, price = ?, quantity = ?
+        SET part_name = ?, quantity = ?, price = ?, car_id = ?
         WHERE part_id = ?
-    """, (part_name, part_number, price, quantity, part_id))
+    """, (part_name, quantity, price, car_id, part_id))
 
     conn.commit()
     print(f"Spare part updated successfully! Part ID: {part_id}")
@@ -189,13 +190,13 @@ def display_spareParts():
         rows = cursor.fetchall()
 
         if not rows:
-            print("No cars found in the garage.")
+            print("\nNo spare parts found in the garage.")
             return
 
         print("\n<--- Spare Parts in the Garage. --->\n")
-        print("PartId\tPartName\tPartNumber\tPrice\tQuantity")
+        print("PartId\tPartName\tQuantity\tPrice\tCar_ID")
         for row in rows:
-            print(f"{row[0]}\t{row[1]}\t\t{row[2]}\t{row[3]}\t{row[4]}")
+            print(f"{row[0]}\t{row[1]}\t\t{row[2]}\t\t{row[3]}\t{row[4]}")
         print("\n<--- End of Spare Parts List --->")
     except sqlite3.Error as e:
         print(f"Error displaying spare parts: {e}")
