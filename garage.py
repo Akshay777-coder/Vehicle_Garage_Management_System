@@ -104,9 +104,10 @@ def display_cars():
             return
 
         print("\n<--- Cars in the Garage. --->")
-        print("\nCarId\tMake\tModel\tYear\tColor\tLicencePlate\tOwnerName")
+        print(f"\n{'CarId':<5} | {'Make':<20} | {'Model':<20} | {'Year':<10} | {'Color':<10} | {'LicencePlate':<15} | {'OwnerName':<20}")
+        print("-" * 110)
         for row in rows:
-            print(f"{row[0]}\t{row[1]}\t{row[2]}\t{row[3]}\t{row[4]}\t{row[5]}\t\t{row[6]}")
+            print(f"{row[0]:<5} | {row[1]:<20} | {row[2]:<20} | {row[3]:<10} | {row[4]:<10} | {row[5]:<15} | {row[6]:<20}")
         print("\n<--- End of Cars List --->")
     except sqlite3.Error as e:
         print(f"Error displaying cars: {e}")
@@ -194,9 +195,10 @@ def display_spareParts():
             return
 
         print("\n<--- Spare Parts in the Garage. --->\n")
-        print("PartId\tPartName\tQuantity\tPrice\tCar_ID")
+        print(f"{'Part ID':<10} | {'Part Name':<15} | {'Quantity':<10} | {'Price':<10} | {'Car_ID':<10}")
+        print("-" * 65)
         for row in rows:
-            print(f"{row[0]}\t{row[1]}\t\t{row[2]}\t\t{row[3]}\t{row[4]}")
+            print(f"{row[0]:<10} | {row[1]:<15} | {row[2]:<10} | {row[3]:<10} | {row[4]:<10}")
         print("\n<--- End of Spare Parts List --->")
     except sqlite3.Error as e:
         print(f"Error displaying spare parts: {e}")

@@ -35,21 +35,20 @@ def create_invoice(car_id, owner_name):
 
     rows = cursor.fetchall()
 
-    print(" " * 21,"Spare Part\tQuantity    Price")
+    print(" " * 21,f"{'Spare Part':<15} | {'Quantity':<10} | {'Price':<10}")
     print(" " * 21,"-" * 40)
 
     if rows:
         for row in rows:
-            print(" " * 21,f"{row[1]}\t\t{row[2]}\t    {row[3]}$")
+            print(" " * 21,f"{row[1]:<15} | {row[2]:<10} | ${row[3]:<10}")
             print(" " * 21,"-" * 40)
     else:
-        print("No spare parts found for this car.")
+        print(" " * 21,"No spare parts found for this car.")
 
     
     conn.commit()
     conn.close()
 
-    print("  Total Amount: ", total(), "$")
-
+    print("\n  Total Amount: ", total(), "$", "\n")
 
     print("*" * horizontal_line)
