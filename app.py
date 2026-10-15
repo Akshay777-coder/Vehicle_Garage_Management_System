@@ -1,6 +1,7 @@
 from unittest import case, main
 import sys
 import garage
+import invoice
 
 garage.create_table_cars()
 garage.create_table_spareParts()
@@ -61,20 +62,20 @@ def spare_parts():
             case 1:
                 print("\n --- Insert Spare Parts --- \n")
                 part_name = input("Enter Part Name: ")
-                part_number = input("Enter Part Number: ")
-                price = float(input("Enter Price: "))
                 quantity = int(input("Enter Quantity: "))
-                garage.insert_data_into_spareParts(part_name, part_number, price, quantity)
+                price = float(input("Enter Price: "))
+                car_id = int(input("Enter Car ID: "))
+                garage.insert_data_into_spareParts(part_name, quantity, price, car_id)
             case 2:
                 garage.display_spareParts()
             case 3:
                 print("\n --- Update Spare Parts --- \n")
                 part_id = int(input("Enter part Id: "))
                 new_part_name = input("Enter New Part Name: ")
-                new_part_number = input("Enter Part Number: ")
-                new_price = float(input("Enter New Price: "))
                 new_quantity = int(input("Enter New Quantity: "))
-                garage.update_spareParts(part_id, new_part_name, new_part_number, new_price, new_quantity)
+                new_price = float(input("Enter New Price: "))
+                new_car_id = int(input("Enter Part Number: "))
+                garage.update_spareParts(part_id, new_part_name, new_quantity, new_price, new_car_id)
             case 4:
                 print("\n --- Delete Spare Parts --- \n")
                 part_id = int(input("Enter Part ID: "))
@@ -96,7 +97,7 @@ def main():
     flag = True
     while(flag):
         print("\n *** Welcome to the Vehicle Garage Management System *** \n")
-        print("1. Cars\n2. Spare Parts\n3. Exit\n")
+        print("1. Cars\n2. Spare Parts\n3. Create Invoice\n4. Exit\n")
         choice = int(input("Enter your Choice: "))
         match choice:
             case 1:
@@ -104,6 +105,21 @@ def main():
             case 2:
                 spare_parts()
             case 3:
+                car_id = int(input("\nEnter Car ID: "))
+                owner_name = input("Enter Owner Name: ")
+
+                conn = garage.create_db()
+                cursor = conn.cursor()
+
+                cursor.execute("SELECT * FROM cars WHERE car_id = ?", (car_id,))
+                rows = cursor.fetchall()
+
+                for row in rows:
+                    if row[6] == owner_name:
+                        invoice.create_invoice(car_id, owner_name)
+                else:
+                    print("Owner Name not found in the database!")
+            case 4:
                 print("\nExiting the program...")
                 flag = False
             case _:
