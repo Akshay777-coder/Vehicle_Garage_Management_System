@@ -1,37 +1,59 @@
-<div align="center">
+ <div align="center">
 
 # 🚗 Vehicle Garage Management System
 
-<p>
-  A simple Python application for managing vehicle records in a garage.
-</p>
+A Python-based application for managing vehicle records and generating garage invoices using SQLite.
 
 <p>
-  <a href="https://github.com/Akshay777-coder/Vehicle_Garage_Management_System">
-    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" alt="GitHub Repository">
-  </a>
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Database-SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
+  <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python" alt="Python"/>
+  <img src="https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite" alt="SQLite"/>
+  <img src="https://img.shields.io/badge/Project-Learning%20Project-green" alt="Learning Project"/>
 </p>
 
 </div>
 
----
+<hr/>
 
-## 📌 Introduction
+<h2>📌 Introduction</h2>
 
-The **Vehicle Garage Management System** is a Python-based project designed to help organize vehicle information in one place. It uses **SQLite** to store vehicle records in a local database.
+<p>
+The Vehicle Garage Management System is a simple Python project designed to manage vehicle information and garage spare-parts records using an SQLite database.
+</p>
 
-The project is suitable for learning Python, database operations, and how an application can connect to a database. Instead of keeping vehicle details in separate handwritten records, the application can store structured information such as the vehicle's make, model, year, colour, licence plate, and owner's name.
+<p>
+The project demonstrates how Python can interact with a database to store and retrieve information. It also includes an invoice module that displays spare-parts details and calculates a total amount for garage billing.
+</p>
 
-## ✨ Project Goals
+<p>
+This project is useful for beginners who want to practise Python programming, SQL queries, database connectivity, functions, and modular programming.
+</p>
 
-- Store vehicle information in a structured database.
-- Make vehicle records easier to organize and manage.
-- Practise Python functions and database connectivity.
-- Learn how to perform SQL operations with Python's built-in `sqlite3` module.
+<h2>🎯 Project Objectives</h2>
 
-## 🧰 Technologies Used
+<ul>
+  <li>Store and organize vehicle information.</li>
+  <li>Manage database operations using Python and SQLite.</li>
+  <li>Maintain spare-parts records in the database.</li>
+  <li>Generate a formatted garage invoice.</li>
+  <li>Display customer or vehicle-owner details on an invoice.</li>
+  <li>Practise writing reusable Python functions and importing modules.</li>
+</ul>
+
+<h2>✨ Features</h2>
+
+<ul>
+  <li>Vehicle record management.</li>
+  <li>SQLite database connectivity.</li>
+  <li>Structured storage of vehicle information.</li>
+  <li>Spare-parts information retrieval.</li>
+  <li>Invoice generation with owner name and car ID.</li>
+  <li>Automatic invoice date and time display.</li>
+  <li>Spare-parts listing with quantity and price.</li>
+  <li>Total amount display.</li>
+  <li>Console-based output with a formatted invoice layout.</li>
+</ul>
+
+<h2>🧰 Technologies Used</h2>
 
 <table>
   <thead>
@@ -42,27 +64,190 @@ The project is suitable for learning Python, database operations, and how an app
   </thead>
   <tbody>
     <tr>
-      <td><strong>Python</strong></td>
+      <td>Python</td>
       <td>Application logic and program execution.</td>
     </tr>
     <tr>
-      <td><strong>SQLite</strong></td>
-      <td>Stores vehicle records in a local database file.</td>
+      <td>SQLite</td>
+      <td>Local database for storing vehicle and spare-parts information.</td>
     </tr>
     <tr>
-      <td><strong>sqlite3</strong></td>
-      <td>Python's built-in library for working with SQLite databases.</td>
+      <td>sqlite3</td>
+      <td>Connects Python to the SQLite database.</td>
     </tr>
     <tr>
-      <td><strong>Git and GitHub</strong></td>
+      <td>datetime</td>
+      <td>Provides the date and time displayed on invoices.</td>
+    </tr>
+    <tr>
+      <td>Git and GitHub</td>
       <td>Version control and project hosting.</td>
     </tr>
   </tbody>
 </table>
 
-## ✅ Vehicle Information
+<h2>📂 Project Structure</h2>
 
-The vehicle records are designed to include the following fields:
+<pre>
+Vehicle_Garage_Management_System/
+│
+├── app.py
+├── garage.py
+├── invoice.py
+├── Database/
+│   └── vehicle_garage.db
+├── .gitignore
+└── README.md
+</pre>
+
+<p><em>Note: The database file may be created automatically by the application. Its actual location depends on the database path configured in garage.py. The Database folder and database file may not be present in a fresh clone until the application creates them.</em></p>
+
+<h3>File Documentation</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>File</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>app.py</code></td>
+      <td>Main application entry point used to run the program.</td>
+    </tr>
+    <tr>
+      <td><code>garage.py</code></td>
+      <td>Handles database connectivity and garage-related database operations, including vehicle and spare-parts records.</td>
+    </tr>
+    <tr>
+      <td><code>invoice.py</code></td>
+      <td>Contains invoice-related functions for retrieving spare-parts information and displaying a formatted bill.</td>
+    </tr>
+    <tr>
+      <td><code>Database/vehicle_garage.db</code></td>
+      <td>SQLite database file used to store application data, depending on the configured database path.</td>
+    </tr>
+    <tr>
+      <td><code>.gitignore</code></td>
+      <td>Specifies files and folders that Git should ignore.</td>
+    </tr>
+    <tr>
+      <td><code>README.md</code></td>
+      <td>Project introduction, setup instructions, features, and documentation.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>⚙️ Requirements</h2>
+
+<p>Make sure you have the following installed:</p>
+
+<ul>
+  <li>Python 3.</li>
+  <li>Git, if you want to clone the repository.</li>
+  <li>A terminal or code editor such as Visual Studio Code.</li>
+</ul>
+
+<p>
+The project uses Python's built-in <code>sqlite3</code> and <code>datetime</code> modules. No additional package installation is normally required for these modules.
+</p>
+
+<h2>🚀 Installation and Setup</h2>
+
+<h3>Step 1: Clone the repository</h3>
+
+<p>Open PowerShell, Command Prompt, or a terminal and execute:</p>
+
+<pre><code>git clone https://github.com/Akshay777-coder/Vehicle_Garage_Management_System.git</code></pre>
+
+<h3>Step 2: Navigate to the project directory</h3>
+
+<pre><code>cd Vehicle_Garage_Management_System</code></pre>
+
+<h3>Step 3: Verify your Python installation</h3>
+
+<pre><code>python --version</code></pre>
+
+<p>On Windows, you can also use:</p>
+
+<pre><code>py --version</code></pre>
+
+<h3>Step 4: Run the application</h3>
+
+<pre><code>python app.py</code></pre>
+
+<p>Alternatively, on Windows:</p>
+
+<pre><code>py app.py</code></pre>
+
+<p>
+Follow the instructions displayed by the program. Make sure the database initialization functions in the project have created the required tables before using database-dependent features.
+</p>
+
+<h2>🧾 Invoice Module Documentation</h2>
+
+<p>
+The <code>invoice.py</code> module adds invoice-generation functionality to the Vehicle Garage Management System. It imports the <code>garage</code> module to access the SQLite database and uses Python's <code>datetime</code> module to display the invoice date and time.
+</p>
+
+<h3>Invoice Functions</h3>
+
+<h4>1. <code>create_invoice(car_id, owner_name)</code></h4>
+
+<p>This function displays an invoice containing:</p>
+
+<ul>
+  <li>Vehicle Garage Management System heading.</li>
+  <li>Vehicle owner's name.</li>
+  <li>Car ID.</li>
+  <li>Current invoice date and time.</li>
+  <li>Spare-parts information associated with the supplied car ID.</li>
+  <li>Quantity and price information for the listed parts.</li>
+  <li>Total amount.</li>
+</ul>
+
+<p>
+The function queries the <code>spare_parts</code> table using the supplied car ID. If no matching records are found, it displays a message indicating that no spare parts were found for that car.
+</p>
+
+<h4>2. <code>total()</code></h4>
+
+<p>
+This function queries the spare-parts table using SQL's <code>SUM()</code> function to calculate the sum of the stored prices. The resulting amount is used by the invoice function.
+</p>
+
+<p><strong>Important:</strong> The current total calculation sums prices from the entire <code>spare_parts</code> table rather than filtering by car ID. If you want an accurate per-vehicle invoice total, update the query to calculate the sum only for the relevant car and ensure the table schema supports that relationship.</p>
+
+<h3>Example Invoice Layout</h3>
+
+<pre>
+********************************************************************************
+                 Vehicle Garage Management System
+
+ Owner Name:  Example Customer
+ Car ID:      1
+ Invoice Date: DD-MM-YYYY
+ Invoice Time: HH:MM
+
+                     Spare Part     | Quantity   | Price
+                     ----------------------------------------
+                     Example Part   | 2          | 500
+                     ----------------------------------------
+
+ Total Amount: 500 $
+********************************************************************************
+</pre>
+
+<p><em>The values above are illustrative only. Actual output depends on the records stored in the database and the invoice code.</em></p>
+
+<h2>🗄️ Database Documentation</h2>
+
+<p>
+The project uses SQLite, a lightweight database that stores information in a local file. Database connections and queries are managed through Python's <code>sqlite3</code> module.
+</p>
+
+<h3>Vehicle Records</h3>
 
 <table>
   <thead>
@@ -72,197 +257,146 @@ The vehicle records are designed to include the following fields:
     </tr>
   </thead>
   <tbody>
-    <tr><td><code>car_id</code></td><td>Unique ID for a vehicle record.</td></tr>
-    <tr><td><code>make</code></td><td>Vehicle manufacturer or brand.</td></tr>
-    <tr><td><code>model</code></td><td>Vehicle model name.</td></tr>
-    <tr><td><code>year</code></td><td>Vehicle manufacturing year.</td></tr>
-    <tr><td><code>color</code></td><td>Vehicle colour.</td></tr>
-    <tr><td><code>license_plate</code></td><td>Vehicle registration or licence plate number.</td></tr>
-    <tr><td><code>owner_name</code></td><td>Name of the vehicle owner.</td></tr>
+    <tr>
+      <td><code>car_id</code></td>
+      <td>Unique vehicle record identifier.</td>
+    </tr>
+    <tr>
+      <td><code>make</code></td>
+      <td>Vehicle manufacturer.</td>
+    </tr>
+    <tr>
+      <td><code>model</code></td>
+      <td>Vehicle model.</td>
+    </tr>
+    <tr>
+      <td><code>year</code></td>
+      <td>Vehicle manufacturing year.</td>
+    </tr>
+    <tr>
+      <td><code>color</code></td>
+      <td>Vehicle colour.</td>
+    </tr>
+    <tr>
+      <td><code>license_plate</code></td>
+      <td>Vehicle registration number.</td>
+    </tr>
+    <tr>
+      <td><code>owner_name</code></td>
+      <td>Name of the vehicle owner.</td>
+    </tr>
   </tbody>
 </table>
 
-> **Note:** The fields and features available to you depend on the current source code in the repository. Update this section if your database schema changes.
+<h3>Spare-Parts Records</h3>
 
-## ⚙️ Requirements
+<p>
+The invoice module reads records from the <code>spare_parts</code> table. Its current query expects a <code>car_id</code> field to identify the relevant vehicle and accesses the returned columns by their positions in each database row.
+</p>
 
-Before running the project, install:
+<p>
+Ensure the actual table schema in <code>garage.py</code> matches the columns used by <code>invoice.py</code>. For reliable invoices, each spare-parts record should have a clearly defined relationship with the relevant vehicle.
+</p>
 
-- Python 3.10 or a compatible Python 3 version.
-- Git (required only if you want to clone the repository).
-- A terminal or code editor, such as VS Code.
-
-SQLite support is included with most standard Python installations through the `sqlite3` module, so a separate SQLite package is usually not required.
-
-## 📥 Installation and Setup
-
-### 1. Clone the repository
-
-Open Command Prompt, PowerShell, or a terminal and run:
-
-```bash
-git clone https://github.com/Akshay777-coder/Vehicle_Garage_Management_System.git
-```
-
-### 2. Open the project folder
-
-```bash
-cd Vehicle_Garage_Management_System
-```
-
-### 3. (Optional) Create a virtual environment
-
-**Windows:**
-
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-```
-
-**Linux / macOS:**
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-### 4. Install dependencies
-
-The project uses Python's built-in `sqlite3` module for SQLite database access. If the repository contains a `requirements.txt` file, install its listed packages with:
-
-```bash
-python -m pip install -r requirements.txt
-```
-
-If there is no `requirements.txt` file and the project uses only built-in Python modules, no additional packages may be needed.
-
-## ▶️ How to Run the Application
-
-From the project directory, run:
-
-```bash
-python app.py
-```
-
-If your system uses `python3` as the Python command, run:
-
-```bash
-python3 app.py
-```
-
-Follow the prompts or instructions displayed by the program.
-
-**If you see `can't open file 'app.py'`:** check the filenames in the project folder. The entry-point file may have a different name; use the actual Python filename in the run command.
-
-## 🗄️ Database Documentation
-
-The project uses **SQLite**, a lightweight database that stores data in a local file. The database file used in the current project code is:
-
-```text
-Database/vehicle_garage.db
-```
-
-The database connection is created using Python's `sqlite3` library. SQL statements can then be used to create tables and insert or retrieve vehicle details.
-
-### Example: Connect to the database
-
-```python
-import sqlite3
-
-database = r"Database/vehicle_garage.db"
-connection = sqlite3.connect(database)
-cursor = connection.cursor()
-
-# Run SQL statements using cursor.execute(...)
-
-connection.commit()
-connection.close()
-```
-
-> This is an illustrative connection example. Use the database path configured in your own `app.py` or database module. If your project already has a connection function, use that function instead of creating a second connection.
-
-## 🧭 How the System Works
+<h2>🔄 Application Workflow</h2>
 
 <ol>
-  <li><strong>Start the application:</strong> Run the Python entry-point file from the project folder.</li>
-  <li><strong>Connect to the database:</strong> Python connects to the SQLite database file.</li>
-  <li><strong>Work with vehicle records:</strong> The program's implemented functions execute database operations for the available features.</li>
-  <li><strong>Save changes:</strong> Database changes are committed so that they can be stored in the database file.</li>
-  <li><strong>Close the connection:</strong> The application closes the database connection when the work is complete.</li>
+  <li>Run <code>app.py</code>.</li>
+  <li>Connect to the SQLite database through <code>garage.py</code>.</li>
+  <li>Perform the vehicle or spare-parts operations supported by the application.</li>
+  <li>Call the invoice functionality when a bill is required.</li>
+  <li>Retrieve spare-parts records for the supplied car ID.</li>
+  <li>Display the owner details, invoice date, spare-parts list, and total amount.</li>
+  <li>Close the database connection after completing the operation.</li>
 </ol>
 
-## 📂 Project Structure
-
-The project is expected to have a structure similar to the following. Actual filenames and folders may differ:
-
-```text
-Vehicle_Garage_Management_System/
-├── app.py
-├── Database/
-│   └── vehicle_garage.db
-├── .gitignore
-└── README.md
-```
-
-## 🛠️ Troubleshooting
+<h2>🛠️ Troubleshooting</h2>
 
 <table>
   <thead>
     <tr>
       <th>Problem</th>
-      <th>What to try</th>
+      <th>Possible Solution</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code>python is not recognized</code></td>
-      <td>Install Python and enable the option to add Python to PATH, or try <code>py app.py</code> on Windows.</td>
+      <td>Python is not recognized</td>
+      <td>Install Python and configure PATH, or try <code>py app.py</code> on Windows.</td>
     </tr>
     <tr>
-      <td><code>can't open file 'app.py'</code></td>
-      <td>Make sure your terminal is in the project directory and confirm the actual entry-point filename.</td>
+      <td>No such table</td>
+      <td>Verify that the database initialization code creates the required tables.</td>
     </tr>
     <tr>
-      <td><code>No such table</code></td>
-      <td>Check that the application creates the required table and connects to the correct database file.</td>
+      <td>Unable to open database file</td>
+      <td>Check the database path and ensure its parent directory exists.</td>
     </tr>
     <tr>
-      <td><code>unable to open database file</code></td>
-      <td>Verify the database path and make sure the parent directory exists and is writable.</td>
+      <td>No spare parts found for this car</td>
+      <td>Verify the car ID and confirm that matching records exist in the spare-parts table.</td>
+    </tr>
+    <tr>
+      <td>Invoice total is incorrect</td>
+      <td>Check whether the total query includes records belonging to other vehicles.</td>
+    </tr>
+    <tr>
+      <td>Duplicate car ID error</td>
+      <td>Check the primary-key configuration and avoid inserting an existing ID when it is generated automatically.</td>
     </tr>
   </tbody>
 </table>
 
-## 🔒 Data and Privacy
+<h2>🔐 Data and Privacy</h2>
 
-- The SQLite database is stored locally unless the application is changed to use another database.
-- Do not commit private customer information or real vehicle-owner data to a public repository.
-- Keep local database files out of Git when they contain private or personal information. Use `.gitignore` where appropriate.
+<ul>
+  <li>Keep private customer information out of public repositories.</li>
+  <li>Use <code>.gitignore</code> to exclude local database files when they contain sensitive data.</li>
+  <li>Do not commit passwords, API keys, or other private credentials.</li>
+  <li>Back up your database before making structural changes.</li>
+</ul>
 
-## 🤝 Contributing
+<h2>🔮 Future Improvements</h2>
 
-Contributions and suggestions are welcome.
+<ul>
+  <li>Calculate invoice totals separately for each vehicle.</li>
+  <li>Add invoice numbers and unique invoice identifiers.</li>
+  <li>Track spare-parts quantities and inventory availability.</li>
+  <li>Store invoice records for later retrieval.</li>
+  <li>Add tax, discounts, and labour charges.</li>
+  <li>Export invoices as PDF files.</li>
+  <li>Improve input validation and error handling.</li>
+  <li>Build a graphical user interface for easier operation.</li>
+</ul>
 
-1. Fork this repository.
-2. Create a branch for your change.
-3. Make and test your changes.
-4. Commit your changes with a clear message.
-5. Open a pull request describing what you changed.
+<h2>🤝 Contributing</h2>
 
-## 👨‍💻 Author
+<p>Suggestions and contributions are welcome.</p>
 
-**Akshay Kumar**
+<ol>
+  <li>Fork the repository.</li>
+  <li>Create a new branch for your changes.</li>
+  <li>Make your changes and test them.</li>
+  <li>Commit your changes with a meaningful message.</li>
+  <li>Push your branch and open a pull request.</li>
+</ol>
 
-- GitHub: [@Akshay777-coder](https://github.com/Akshay777-coder)
-- Project repository: [Vehicle Garage Management System](https://github.com/Akshay777-coder/Vehicle_Garage_Management_System)
+<h2>👨‍💻 Author</h2>
 
-## 📄 License
+<p>
+<strong>Akshay Kumar</strong><br/>
+GitHub: <a href="https://github.com/Akshay777-coder">Akshay777-coder</a>
+</p>
 
-No licence information is specified in this README. If you want others to reuse, modify, or distribute this project, consider adding a `LICENSE` file and mentioning the selected licence here.
+<h2>📄 License</h2>
 
----
+<p>
+No license is currently specified in this documentation. Add a suitable <code>LICENSE</code> file if you intend to publish the project under an open-source license.
+</p>
+
+<hr/>
 
 <div align="center">
-  <p><strong>Thank you for visiting the Vehicle Garage Management System repository!</strong></p>
-  <p>If you find this project useful, consider giving the repository a ⭐ on GitHub.</p>
+  <p>Thank you for visiting the Vehicle Garage Management System!</p>
+  <p>If you find this project useful, consider giving it a star on GitHub. ⭐</p>
 </div>
