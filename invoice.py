@@ -49,6 +49,6 @@ def create_invoice(car_id, owner_name):
     conn.commit()
     conn.close()
 
-    print("\n  Total Amount: ", total(), "$", "\n")
+    print("\n  Total Amount: ", "$",total(), "\n")
 
     print("*" * horizontal_line)
